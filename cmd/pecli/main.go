@@ -14,7 +14,6 @@ var (
 	boilerplateLanguage string
 )
 
-
 func main() {
 	app := &cli.App{
 		Name:  "pecli",
