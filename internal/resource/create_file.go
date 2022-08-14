@@ -90,7 +90,7 @@ func (r *Resource) CreateManifest() {
 		}
 
 		clientScriptsJoined := strings.Join(clientScripts, ", ")
-		cs = fmt.Sprintf("client_scripts {%v}", clientScriptsJoined)
+		cs = fmt.Sprintf("client_scripts {\n%v\n}", clientScriptsJoined)
 	}
 
 	if len(r.MapServerScripts) > 0 {
@@ -101,7 +101,7 @@ func (r *Resource) CreateManifest() {
 		}
 
 		serverScriptsJoined := strings.Join(serverScripts, ", ")
-		ss = fmt.Sprintf("server_scripts {%v}", serverScriptsJoined)
+		ss = fmt.Sprintf("server_scripts {\n%v\n}", serverScriptsJoined)
 	}
 
 	manifestString := fmt.Sprintf("%v\n\n%v", cs, ss)

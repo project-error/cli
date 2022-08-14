@@ -4,15 +4,18 @@ import (
 	"log"
 	"os"
 
-	"github.com/fatih/color"
 	"github.com/urfave/cli/v2"
 	"projecterror.dev/cli/internal/resource"
 )
 
-func main() {
-	var boilerplateName string
-	var boilerplateLanguage string
+	
+var (
+	boilerplateName string
+	boilerplateLanguage string
+)
 
+
+func main() {
 	app := &cli.App{
 		Name:  "pe",
 		Usage: "Create npwd templates, or boilerplates",
@@ -27,22 +30,26 @@ func main() {
 						Aliases:     []string{"n"},
 						Usage:       "Name of the resource",
 						Destination: &boilerplateName,
+						Required: true,
 					},
 					&cli.StringFlag{
 						Name:        "langauge",
 						Aliases:     []string{"l", "lang"},
 						Usage:       "Language to use",
 						Destination: &boilerplateLanguage,
+						Required: true,
 					},
 				},
 				Action: func(c *cli.Context) error {
-					cRed := color.New(color.FgGreen)
-					cRed.Println("Configure a new boilerplate")
-
 					if c.String("langauge") == "lua" {
 						resource.CreateLuaResource(boilerplateName)
 					}
 
+					if c.String("langauge") == "javascript" {
+						resource.CreateJSResource(boilerplateName)
+					}
+
+					
 					return nil
 				},
 			},
