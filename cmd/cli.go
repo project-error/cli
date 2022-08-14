@@ -17,7 +17,7 @@ var (
 
 func main() {
 	app := &cli.App{
-		Name:  "pe",
+		Name:  "pecli",
 		Usage: "Create npwd templates, or boilerplates",
 		Commands: []*cli.Command{
 			{
@@ -27,7 +27,6 @@ func main() {
 				Flags: []cli.Flag{
 					&cli.StringFlag{
 						Name:        "name",
-						Aliases:     []string{"n"},
 						Usage:       "Name of the resource",
 						Destination: &boilerplateName,
 						Required: true,
